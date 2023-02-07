@@ -5,8 +5,10 @@ const config = {
   headers: { Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}` },
 };
 
-export const fetchCharacters = createAsyncThunk("characters/getCharacters",async()=>{
-  const res = await axios.get(`${process.env.REACT_APP_API_BASE_ENDPOINT}/character?limit=50`, config);
+const char_limit = 467
+
+export const fetchCharacters = createAsyncThunk("characters/getCharacters",async(page)=>{
+  const res = await axios.get(`${process.env.REACT_APP_API_BASE_ENDPOINT}/character?limit=${char_limit}&page=${page}`, config);
   return res.data.docs
 })
 
@@ -29,12 +31,18 @@ export const charactersSlice = createSlice({
     movies: [],
     characters: [],
     isLoading: false,
+    page : 0,
+    isThereNextPage :true
   },
   reducers: {},
   extraReducers: {
     [fetchCharacters.fulfilled]: (state, action) => {
-      state.characters = action.payload;
+      state.characters = [...state.characters, ...action.payload];
       state.isLoading = false;
+      state.page +=1
+      console.log(state.page)
+      if(state.page > 2 ){state.isThereNextPage = false;}
+       
     },
     [fetchCharacters.pending]: (state, action) => {
       state.isLoading = true;

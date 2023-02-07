@@ -1,3 +1,7 @@
+html {
+    height: 100%;
+}
+
 body {
   height: 100%;
   background-color: #282c34;
@@ -6,11 +10,27 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+}
+
+.row{
+  width: 100%;
 }
 
 .col-3 {
     display: flex;
-    padding: 10px;
-    margin-top: 20px;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.card {
+    flex: 1 1 auto;
+}
+
+.card-img-top{
+  border-radius: 5px;
+}
+
+button.btn.btn-primary:hover {
+  transform: scale(1.1);
 }
