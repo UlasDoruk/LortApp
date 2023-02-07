@@ -1,14 +1,11 @@
 import React, { useEffect } from "react";
 import { fetchCharacters } from "../redux/charactersSlice";
 import { useDispatch, useSelector } from "react-redux";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import Loading from "../components/Loading";
 
 function Characters() {
   const data = useSelector((state) => state.characters.characters);
+  const loading = useSelector((state)=>state.characters.isLoading)
   let dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,36 +13,28 @@ function Characters() {
   }, [dispatch]);
 
   return (
-    <div>
-      {data.map((item, index) => {
-        return (
-          <Card sx={{ minWidth: 275 }} key={index}>
-            <CardContent>
-              <Typography
-                sx={{ fontSize: 14 }}
-                color="text.secondary"
-                gutterBottom
-              >
-                {item.name}
-              </Typography>
-              <Typography variant="h5" component="div">
-                {/* be{bull}nev{bull}o{bull}lent */}
-              </Typography>
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                {item.gender}
-                {item.race}
-              </Typography>
-              <Typography variant="body2">
-                {item.birth} {item.death}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small">Learn More</Button>
-            </CardActions>
-          </Card>
-        );
-      })}
-    </div>
+    <h1 className="container">
+      {loading ? <Loading/> : "Characters"}
+      <div className="row">
+        {data.map((item, index) => {
+          return (
+            <div className="col-3" key={index}>
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">{item.name}</h5>
+                  <p className="card-text">
+                    {item.birth} || {item.death} || {item.race} || {item.gender}
+                  </p>
+                  <a href="#" className="btn btn-primary">
+                    Go somewhere
+                  </a>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </h1>
   );
 }
 
