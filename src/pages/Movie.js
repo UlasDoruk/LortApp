@@ -1,9 +1,13 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
 
 function Movie() {
   return (
-    <div>Movie</div>
-  )
+    <>
+      <Navbar />
+      <div>Movie</div>
+    </>
+  );
 }
 
 export default Movie

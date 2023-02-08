@@ -1,9 +1,42 @@
-import React from "react";
+import { Bolt } from "@mui/icons-material";
+import { NavLink, Link } from "react-router-dom";
 
 function Navbar() {
   return (
     <>
-      
+      <nav className="navbar navbar-expand-lg ">
+        <NavLink className="navbar-brand" to="/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="White"
+            className="bi bi-house-door-fill"
+            viewBox="0 0 16 16"
+          >
+            <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z" />
+          </svg>
+        </NavLink>
+        <div className="nine" style={{ fontWeight: "bold" }}>
+          <h1 className="title">
+            Lord Of The Rings App<span>Books, Characters, Movies</span>
+          </h1>
+        </div>
+        <div className="btns">
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <Link to={"/Characters"}>
+                <button className="btn btn-primary">Characters</button>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/Movie"}>
+                <button className="btn btn-primary">Movies</button>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </>
   );
 }

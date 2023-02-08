@@ -34,3 +34,89 @@ body {
 button.btn.btn-primary:hover {
   transform: scale(1.1);
 }
+
+button.btn.btn-primary {
+    font-size: large;
+    margin-right: 10px;
+}
+
+.nine h1 {
+  text-align:center; text-transform:uppercase; color:#222; letter-spacing:1px;
+  font-family:"Playfair Display", serif; font-weight:400;    margin-left: 150px;
+}
+.nine h1 span {
+  margin-top: 5px;
+    font-size:15px; color:#444; word-spacing:1px; font-weight:normal; letter-spacing:2px;
+    text-transform: uppercase; font-family:"Raleway", sans-serif; font-weight:500;
+
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-rows: 27px 0;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+.nine h1 span:after,.nine h1 span:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 5px;
+  background-color:#f8f8f8;
+}
+
+nav.navbar.navbar-expand-lg {
+    display: flex;
+    justify-content: space-between;
+    background: #5585b5;
+}
+
+.container.chrct {
+    margin-top: 20px;
+}
+
+h1.moviess {
+    margin-top: 60px;
+}
+
+.col-12 {
+    width: -20%;
+    padding: 100px;
+    margin-bottom: -150px;
+}
+
+button.btn.btn-primary.nextPage {
+    margin-bottom: 20px;
+}
+
+.card-body.home {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+input[type="search"] {
+    margin-right: 10px;
+}
+
+.searchBar {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    height: 40px;
+}
+
+input[type="search"] {
+      padding: 19px;
+    border-radius: 5px;
+    text-align: start;
+    font-size: x-large;
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    background: #222831;
+    color: white;
+  }

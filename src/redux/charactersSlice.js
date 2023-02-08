@@ -40,7 +40,6 @@ export const charactersSlice = createSlice({
       state.characters = [...state.characters, ...action.payload];
       state.isLoading = false;
       state.page +=1
-      console.log(state.page)
       if(state.page > 2 ){state.isThereNextPage = false;}
        
     },

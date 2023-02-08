@@ -3,6 +3,7 @@ import { fetchCharacters } from "../redux/charactersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../components/Loading";
 import SearchBar from "../components/SearchBar";
+import  Navbar  from "../components/Navbar";
 
 function Characters() {
   const data = useSelector((state) => state.characters.characters);
@@ -17,9 +18,9 @@ function Characters() {
 
   return (
     <>
+      <Navbar />
       <h1 className="container">
         <SearchBar />
-        <p style={{ color: "white" }}>Characters</p>
         <div className="row">
           {data.map((item, index) => {
             return (
@@ -31,7 +32,10 @@ function Characters() {
                 />
                 <div className="card">
                   <div className="card-body">
-                    <h5 className="card-title">{item.name}{index}</h5>
+                    <h5 className="card-title">
+                      {item.name}
+                      {index}
+                    </h5>
                     <p className="card-text">
                       {item.birth} || {item.death} || {item.race} ||{" "}
                       {item.gender}
@@ -44,12 +48,13 @@ function Characters() {
           })}
         </div>
         {isThereNextPage && !loading && (
-            <button
-              className="btn btn-primary"
-              onClick={() => dispatch(fetchCharacters(page))}>
-              Next Page
-            </button>
-          )}
+          <button
+            className="btn btn-primary nextPage"
+            onClick={() => dispatch(fetchCharacters(page))}
+          >
+            Next Page
+          </button>
+        )}
         {loading ? <Loading /> : ""}
       </h1>
     </>
