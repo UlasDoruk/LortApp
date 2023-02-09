@@ -170,3 +170,19 @@ h5.card-title {
 .moviebtn {
     padding: 20px;
 }
+.card-text {
+    margin-right: 10%;
+}
+
+.card-body.home.book {
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+
+}
+
+.row.movie {
+    width: 50%;
+    margin-left: 25%;
+}
+

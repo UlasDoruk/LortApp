@@ -15,6 +15,11 @@ export const fetchCharacters = createAsyncThunk("characters/getCharacters",async
   return res.data.docs
 })
 
+export const fetchCharacter = createAsyncThunk("characters/getCharacter",async(id)=>{
+  const res = await axios.get(`${process.env.REACT_APP_API_BASE_ENDPOINT}/character/${id}`,config)
+  return res.data
+})
+
 export const fetchMovies = createAsyncThunk("characters/getMovies",async () => {
   const res = await axios.get(`${process.env.REACT_APP_API_BASE_ENDPOINT}/movie?offset=2`,config);
     return res.data.docs;
@@ -30,7 +35,9 @@ export const fetchBooks = createAsyncThunk("characters/getBooks",async () => {
 export const charactersSlice = createSlice({
   name: "character",
   initialState: {
-    character:[],
+    character: [],
+    movie: [],
+    book: [],
     books: [],
     movies: [],
     characters: [],
@@ -39,9 +46,15 @@ export const charactersSlice = createSlice({
     isThereNextPage: true,
   },
   reducers: {
-    getCharacter:(state,action)=>{
-      state.character = action.payload
-    }
+    getCharacter: (state, action) => {
+      state.character = action.payload;
+    },
+    getMovie: (state, action) => {
+      state.movie = action.payload;
+    },
+    getBook: (state, action) => {
+      state.book = action.payload;
+    },
   },
   extraReducers: {
     [fetchCharacters.fulfilled]: (state, action) => {
@@ -51,18 +64,20 @@ export const charactersSlice = createSlice({
       if (state.page > 45) {
         state.isThereNextPage = false;
       }
+    },[fetchCharacter.fulfilled]:(state,action)=>{
+      state.character = action.payload
     },
-    [fetchCharacters.pending]: (state, action) => {
+    [fetchCharacters.pending]: (state) => {
       state.status = "loading";
     },
-    [fetchBooks.pending]: (state, action) => {
+    [fetchBooks.pending]: (state) => {
       state.status = "loading";
     },
     [fetchBooks.fulfilled]: (state, action) => {
       state.books = action.payload;
       state.status = "succeeded";
     },
-    [fetchMovies.pending]: (state, action) => {
+    [fetchMovies.pending]: (state) => {
       state.status = "loading";
     },
     [fetchMovies.fulfilled]: (state, action) => {
@@ -72,5 +87,5 @@ export const charactersSlice = createSlice({
   },
 });
 
-export const { getCharacter } = charactersSlice.actions;
+export const { getCharacter, getMovie, getBook } = charactersSlice.actions;
 export default charactersSlice.reducer;

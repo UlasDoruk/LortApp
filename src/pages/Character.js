@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCharacter, getCharacter } from '../redux/charactersSlice';
 
 function Character() {
+
+  let dispatch = useDispatch()
   
   const char = useSelector((state)=>state.characters.character)
+
+  useEffect(()=>{
+    dispatch(fetchCharacter(char._id))
+  },[dispatch])
 
   const renderCharacter = () => {
     return (
