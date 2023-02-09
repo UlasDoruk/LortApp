@@ -15,10 +15,11 @@ export const fetchCharacters = createAsyncThunk("characters/getCharacters",async
   return res.data.docs
 })
 
-export const fetchCharacter = createAsyncThunk("characters/getCharacter",async(id)=>{
-  const res = await axios.get(`${process.env.REACT_APP_API_BASE_ENDPOINT}/character/${id}`,config)
-  return res.data
-})
+export const fetchSearch = createAsyncThunk("characters/getCharacters",async (term) => 
+{const res = await axios.get(`${process.env.REACT_APP_API_BASE_ENDPOINT}/character?name=${term}`,config);
+    return res.data.docs;
+  }
+);
 
 export const fetchMovies = createAsyncThunk("characters/getMovies",async () => {
   const res = await axios.get(`${process.env.REACT_APP_API_BASE_ENDPOINT}/movie?offset=2`,config);
@@ -64,8 +65,6 @@ export const charactersSlice = createSlice({
       if (state.page > 45) {
         state.isThereNextPage = false;
       }
-    },[fetchCharacter.fulfilled]:(state,action)=>{
-      state.character = action.payload
     },
     [fetchCharacters.pending]: (state) => {
       state.status = "loading";
@@ -83,6 +82,8 @@ export const charactersSlice = createSlice({
     [fetchMovies.fulfilled]: (state, action) => {
       state.movies = action.payload;
       state.status = "succeeded";
+    },[fetchSearch.fulfilled]:(state,{payload})=>{
+      return { characters: payload }
     },
   },
 });

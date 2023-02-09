@@ -39,7 +39,7 @@ function Characters() {
                 />
                 <div className="card">
                   <div className="card-body">
-                    <h5 className="card-title">{item.name}</h5>
+                    <h5 className="card-title">{item.name}{index}</h5>
                     <div className="card-text">
                       {item.gender && <p>Gender : {item.gender}</p>}
                       {item.birth && <p>Birth : {item.birth}</p>}

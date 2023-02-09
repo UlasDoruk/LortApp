@@ -1,17 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Navbar from '../components/Navbar'
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCharacter, getCharacter } from '../redux/charactersSlice';
+import { useSelector } from 'react-redux';
 
 function Character() {
-
-  let dispatch = useDispatch()
   
   const char = useSelector((state)=>state.characters.character)
-
-  useEffect(()=>{
-    dispatch(fetchCharacter(char._id))
-  },[dispatch])
 
   const renderCharacter = () => {
     return (
@@ -26,7 +19,7 @@ function Character() {
             <div className="card char">
               <div className="card-body home">
                 <h1 className="char">
-                  {char.name ? <p>Name : {char.name} </p> : ""}
+                  {char.name ? <p>{char.name} </p> : ""}
                   {char.Gender ? <p>Gender : {char.gender} </p> : ""}
                 </h1>
                 <div className="card-text">
