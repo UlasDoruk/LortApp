@@ -12,6 +12,7 @@ function SearchBar() {
   const submitHandler= ((e)=>{
     e.preventDefault()
     dispatch(fetchSearch(term))
+    setTerm("")
   })
 
   return (

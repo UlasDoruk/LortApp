@@ -10,23 +10,28 @@ const config = {
 const char_limit = 20
 
 // Extra reducers using for fething Apı
+
+// fetching characters from Apı
 export const fetchCharacters = createAsyncThunk("characters/getCharacters",async(page)=>{
   const res = await axios.get(`${process.env.REACT_APP_API_BASE_ENDPOINT}/character?limit=${char_limit}&offset=${page*char_limit}`, config);
   return res.data.docs
 })
 
+// fetching searched character from Apı
 export const fetchSearch = createAsyncThunk("characters/getCharacters",async (term) => 
 {const res = await axios.get(`${process.env.REACT_APP_API_BASE_ENDPOINT}/character?name=${term}`,config);
     return res.data.docs;
   }
 );
 
+// fetching movies from Apı
 export const fetchMovies = createAsyncThunk("characters/getMovies",async () => {
   const res = await axios.get(`${process.env.REACT_APP_API_BASE_ENDPOINT}/movie?offset=2`,config);
     return res.data.docs;
   }
 );
 
+// fetching books from Apı
 export const fetchBooks = createAsyncThunk("characters/getBooks",async () => {
     const res = await axios.get(`${process.env.REACT_APP_API_BASE_ENDPOINT}/book`,config);
     return res.data.docs;
@@ -82,8 +87,10 @@ export const charactersSlice = createSlice({
     [fetchMovies.fulfilled]: (state, action) => {
       state.movies = action.payload;
       state.status = "succeeded";
-    },[fetchSearch.fulfilled]:(state,{payload})=>{
-      return { characters: payload }
+    },
+    [fetchSearch.fulfilled]: (state, action) => {
+      state.characters = [...action.payload];
+      // return { ...state,characters: payload };
     },
   },
 });

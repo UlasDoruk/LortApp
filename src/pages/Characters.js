@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { fetchCharacters } from "../redux/charactersSlice";
 import { getCharacter } from "../redux/charactersSlice";
 import { useDispatch, useSelector } from "react-redux";
-import Loading from "../components/Loading";
 import SearchBar from "../components/SearchBar";
 import  Navbar  from "../components/Navbar";
 
@@ -39,7 +38,7 @@ function Characters() {
                 />
                 <div className="card">
                   <div className="card-body">
-                    <h5 className="card-title">{item.name}{index}</h5>
+                    <h5 className="card-title">{item.name}</h5>
                     <div className="card-text">
                       {item.gender && <p>Gender : {item.gender}</p>}
                       {item.birth && <p>Birth : {item.birth}</p>}
@@ -74,14 +73,14 @@ function Characters() {
             );
           })}
         </div>
-        {isThereNextPage && status !== "loading" && (
+        {isThereNextPage  && (
           <button
             className="btn btn-primary nextPage"
             onClick={() => dispatch(fetchCharacters(page))}>
             Next Page
           </button>
         )}
-        {status ==="loading" ? <Loading /> : ""}
+        {/* {status ==="loading" ? <Loading /> : ""} */}
       </h1>
     </>
   );
