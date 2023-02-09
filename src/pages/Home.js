@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom';
 import { fetchBooks,fetchMovies } from '../redux/charactersSlice'
 import { useDispatch, useSelector } from "react-redux";
 import Loading from '../components/Loading';
@@ -8,13 +9,13 @@ function Home() {
 
     const movies = useSelector((state) => state.characters.movies);
     const books = useSelector((state) => state.characters.books);
-    const loading = useSelector((state)=>state.characters.isLoading)
+    const status = useSelector((state) => state.characters.status);
 
     let dispatch = useDispatch()
 
     useEffect(()=>{
-        dispatch(fetchBooks());
-        dispatch(fetchMovies())
+         dispatch(fetchBooks());
+         dispatch(fetchMovies());   
     },[dispatch])
 
     const renderBooks = (()=>{
@@ -33,9 +34,11 @@ function Home() {
                       <div className="card">
                         <div className="card-body home">
                           <h5 className="card-title">{item.name}</h5>
-                          <button href="#" className="btn btn-primary">
-                            Go somewhere
-                          </button>
+                          <Link to={`/Book/${item._id}`}>
+                            <button className="btn btn-primary">
+                              Go somewhere
+                            </button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -50,6 +53,7 @@ function Home() {
     const renderMovies =(()=>{
         return (
           <React.Fragment>
+            <br></br>
             <h1 className='moviess' style={{ color: "white" }}>
               MOVIES
             </h1>
@@ -70,9 +74,11 @@ function Home() {
                           {item.academyAwardWins} || Tomato ={" "}
                           {item.rottenTomatoesScore}
                         </p>
-                        <button href="#" className="btn btn-primary">
-                          Go somewhere
-                        </button>
+                        <Link to={`/Movie/${item._id}`}>
+                          <button className="btn btn-primary">
+                            Go somewhere
+                          </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -87,7 +93,7 @@ function Home() {
     <>
       <Navbar />
       <div className="container chrct">
-        {loading ? (
+        {status === "loading" ? (
           <Loading />
         ) : (
           <div>

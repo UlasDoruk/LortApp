@@ -30,7 +30,7 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={"/Movie"}>
+              <Link to={"/Movies"}>
                 <button className="btn btn-primary">Movies</button>
               </Link>
             </li>

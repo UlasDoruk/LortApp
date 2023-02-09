@@ -1,13 +1,13 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 
-function Book() {
+function Movies() {
   return (
     <>
       <Navbar />
-      <div>Book</div>
+      <div>Movies</div>
     </>
   );
 }
 
-export default Book
+export default Movies
