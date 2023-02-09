@@ -41,9 +41,14 @@ button.btn.btn-primary {
 }
 
 .nine h1 {
-  text-align:center; text-transform:uppercase; color:#222; letter-spacing:1px;
-  font-family:"Playfair Display", serif; font-weight:400;    margin-left: 150px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #222;
+    letter-spacing: 10px;
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
 }
+
 .nine h1 span {
   margin-top: 5px;
     font-size:15px; color:#444; word-spacing:1px; font-weight:normal; letter-spacing:2px;
@@ -67,8 +72,13 @@ button.btn.btn-primary {
 
 nav.navbar.navbar-expand-lg {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     background: #5585b5;
+}
+
+a.navbar-brand {
+    position: absolute;
+    left: 10px;
 }
 
 .container.chrct {
@@ -119,3 +129,44 @@ input[type="search"] {
     background: #222831;
     color: white;
   }
+
+p{
+    font-size: small;
+}
+
+.charbtn {
+    padding: 10px;
+    justify-content: center;
+    position: absolute;
+    bottom: 0px;
+    width: 85%;
+}
+
+p.last {
+    margin-bottom: 70px;
+}
+
+.card.char {
+    padding: 10px;
+    background: slategrey;
+}
+.col-12.char {
+    padding: 10px;
+    margin-left: 50%;
+}
+.row.char{
+    width: 50%;
+}
+
+.btns {
+    position: absolute;
+    right: 10px;
+}
+
+h5.card-title {
+    padding: 20px;
+}
+
+.moviebtn {
+    padding: 20px;
+}

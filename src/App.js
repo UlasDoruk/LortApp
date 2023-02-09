@@ -2,7 +2,7 @@ import './App.css';
 import {Route,Routes} from "react-router-dom";
 import Home from "./pages/Home"
 import Book from './pages/Book';
-import { Movie } from '@mui/icons-material';
+import Movie  from './pages/Movie';
 import Movies from "./pages/Movies";
 import Characters from './pages/Characters';
 import Character from "./pages/Character"

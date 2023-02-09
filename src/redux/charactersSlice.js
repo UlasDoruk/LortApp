@@ -7,11 +7,11 @@ const config = {
 };
 
 // Character limit for pagination
-const char_limit = 900
+const char_limit = 20
 
 // Extra reducers using for fething Apı
 export const fetchCharacters = createAsyncThunk("characters/getCharacters",async(page)=>{
-  const res = await axios.get(`${process.env.REACT_APP_API_BASE_ENDPOINT}/character?limit=${char_limit}&page=${page}`, config);
+  const res = await axios.get(`${process.env.REACT_APP_API_BASE_ENDPOINT}/character?limit=${char_limit}&offset=${page*char_limit}`, config);
   return res.data.docs
 })
 
@@ -48,7 +48,7 @@ export const charactersSlice = createSlice({
       state.characters = [...state.characters, ...action.payload];
       state.status = false;
       state.page += 1;
-      if (state.page > 2) {
+      if (state.page > 45) {
         state.isThereNextPage = false;
       }
     },

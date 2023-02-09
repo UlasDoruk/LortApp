@@ -1,32 +1,34 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import { useSelector } from 'react-redux';
-import { render } from '@testing-library/react';
 
 function Character() {
-
+  
   const char = useSelector((state)=>state.characters.character)
 
   const renderCharacter = () => {
     return (
       <React.Fragment>
-        <br></br>
-        <div className="row">
-          <div className="col-12">
+        <div className="row char">
+          <div className="col-12 char">
             <img
               className="card-img-top"
-              src="https://w0.peakpx.com/wallpaper/47/295/HD-wallpaper-the-one-ring-lotr-rings-fantasy.jpg"
+              src="https://images2.alphacoders.com/279/thumb-1920-279162.jpg"
               alt="Card image cap"
             />
-            <div className="card">
+            <div className="card char">
               <div className="card-body home">
-                <h1 className="char">Name = {char.name} Gender = {char.gender} </h1>
-                <h3 className="card-text">
-                  {char.birth} || {char.death}
-                </h3>
-                <h3 className="card-text">
-                  {char.race}
-                </h3>
+                <h1 className="char">
+                  {char.name ? <p>Name : {char.name} </p> : ""}
+                  {char.Gender ? <p>Gender : {char.gender} </p> : ""}
+                </h1>
+                <div className="card-text">
+                  {char.birth ? <p>Birth : {char.birth} </p> : ""}{" "}
+                  {char.death ? <p>Death : {char.death} </p> : ""}
+                </div>
+                <div className="card-text">
+                  {char.race ? <p>Race : {char.race} </p> : ""}
+                </div>
               </div>
             </div>
           </div>
