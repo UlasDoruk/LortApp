@@ -1,6 +1,6 @@
 # LotrApp
 
-- The app displays Lord of the Rings books, movies and all characters. Also their individual pages.
+- The app displays Lord of the Rings books, movies and all characters. Also their own pages.
 - Apı doesn't have any image endpoint. All images added by me.
 
 # [LotrApp](https://master--lotr-app.netlify.app/)
