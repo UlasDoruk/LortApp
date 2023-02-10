@@ -1,6 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import Navbar from '../components/Navbar'
+import Footer from "../components/Footer";
+
 
 function Movie() {
 
@@ -34,6 +36,7 @@ function Movie() {
     <>
       <Navbar />
       {renderMovie()}
+      <Footer/>
     </>
   );
 }

@@ -3,6 +3,7 @@ import { fetchMovies, getMovie } from '../redux/charactersSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from "react";
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer';
 import Loading from '../components/Loading';
 
 
@@ -67,6 +68,7 @@ function Movies() {
           );
         })}
       </div>
+      <Footer/>
     </>
   );
 }

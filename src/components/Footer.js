@@ -5,11 +5,11 @@ function Footer() {
     <>
       <footer>
         <hr></hr>
-        <div className="footerText" style={{ color: "white",padding:"10px" }}>
+        <div className="footerText" style={{ color: "white", padding: "10px" }}>
           <span>Created by UDK</span>
         </div>
         <div className="footerbtns">
-          <a href="https://github.com/UlasDoruk" style={{margin:"3px"}}>
+          <a href="https://github.com/UlasDoruk" style={{ margin: "3px" }}>
             <button className="btn btn-dark">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +23,10 @@ function Footer() {
               </svg>
             </button>
           </a>
-          <a href="https://www.linkedin.com/in/karamanulas/">
+          <a
+            href="https://www.linkedin.com/in/karamanulas/"
+            style={{ margin: "3px" }}
+          >
             <button className="btn btn-dark">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

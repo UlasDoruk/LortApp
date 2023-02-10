@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import Navbar from '../components/Navbar'
 import Loading from '../components/Loading';
+import Footer from '../components/Footer';
 
 function Book() {
 
@@ -34,6 +35,7 @@ function Book() {
       <Navbar />
       {status === "loading" ? <Loading /> : ""}
       {renderBook()}
+      <Footer/>
     </>
   );
 }
