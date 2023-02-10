@@ -3,32 +3,36 @@ import { Link } from "react-router-dom";
 import { fetchCharacters } from "../redux/charactersSlice";
 import { getCharacter } from "../redux/charactersSlice";
 import { useDispatch, useSelector } from "react-redux";
-import Loading from "../components/Loading"
-// import SearchBar from "../components/SearchBar";
+// import Loading from "../components/Loading"
+import SearchBar from "../components/SearchBar";
 import  Navbar  from "../components/Navbar";
 
 function Characters() {
   const data = useSelector((state) => state.characters.characters);
   const status = useSelector((state) => state.characters.status);
-  const page = useSelector((state)=>state.characters.page)
-  const isThereNextPage = useSelector((state)=>state.characters.isThereNextPage)
+  // const page = useSelector((state)=>state.characters.page)
+  // const isThereNextPage = useSelector((state)=>state.characters.isThereNextPage)
 
   let dispatch = useDispatch();
 
   const handleID = (item)=>{
     dispatch(getCharacter(item));
   }
+
+  const handleCharacters = ((page)=>{
+    dispatch(fetchCharacters(page))
+  })
   
   useEffect(()=>{
-    if(status === "idle"){dispatch(fetchCharacters());}
-  },[dispatch,status])
+    if(status==="idle"){handleCharacters()}
+  },[status])
 
   return (
     <>
       <Navbar />
-      {status === "loading" ? <Loading /> : ""}
+      {/* {status === "loading" ? <Loading /> : ""} */}
       <h1 className="container">
-        {/* <SearchBar /> */}
+        <SearchBar />
         <div className="row">
           {data.map((item, index) => {
             return (
@@ -76,14 +80,22 @@ function Characters() {
             );
           })}
         </div>
-        {isThereNextPage && status !== "loading" && (
+        {/* {isThereNextPage &&  (
           <button
             className="btn btn-primary nextPage"
-            onClick={() => dispatch(fetchCharacters(page))}
-          >
-            Next Page
+            onClick={handleCharacters(page)}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              className="bi bi-arrow-down-circle-fill"
+              viewBox="0 0 16 16"
+            >
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
+            </svg>
           </button>
-        )}
+        )} */}
       </h1>
     </>
   );
