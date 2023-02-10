@@ -185,8 +185,16 @@ h5.card-title {
     width: 50%;
     margin-left: 25%;
 }
+.footerbtns {
+    display: flex;
+    justify-content: center;
+}
 
-/* Responsive */
+footer {
+    background: #222831;
+}
+
+/* --- Responsive --- */
 
 @media screen and (max-width: 1000px){
     .row {
