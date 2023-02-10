@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { fetchBooks,fetchMovies, getBook, getMovie } from '../redux/charactersSlice'
 import { useDispatch, useSelector } from "react-redux";
 import Loading from '../components/Loading';
+import Footer from "../components/Footer"
 import Navbar from '../components/Navbar';
 
 function Home() {
@@ -135,6 +136,7 @@ function Home() {
           </div>
         )}
       </div>
+      <Footer/>
     </>
   );
 }

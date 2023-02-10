@@ -10,7 +10,7 @@ import  Navbar  from "../components/Navbar";
 function Characters() {
   const data = useSelector((state) => state.characters.characters);
   const status = useSelector((state) => state.characters.status);
-  // const page = useSelector((state)=>state.characters.page)
+  const page = useSelector((state)=>state.characters.page)
   // const isThereNextPage = useSelector((state)=>state.characters.isThereNextPage)
 
   let dispatch = useDispatch();
@@ -36,7 +36,7 @@ function Characters() {
         <div className="row">
           {data.map((item, index) => {
             return (
-              <div className="col-3" key={index}>
+              <div className="col-md-3" key={index}>
                 <img
                   className="card-img-top"
                   src="https://w0.peakpx.com/wallpaper/47/295/HD-wallpaper-the-one-ring-lotr-rings-fantasy.jpg"

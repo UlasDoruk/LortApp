@@ -7,9 +7,9 @@ const config = {
 };
 
 // Character limit for pagination
-const char_limit = 933
+const char_limit = 20
 
-// ------------------- Extra reducers using for fething Apı --------------------
+// ------------------- Extra reducers using for fething Apı -------------------
 
 // fetching characters from Apı
 export const fetchCharacters = createAsyncThunk("characters/getCharacters",async(page)=>{
