@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { fetchCharacters } from "../redux/charactersSlice";
 import { getCharacter } from "../redux/charactersSlice";
 import { useDispatch, useSelector } from "react-redux";
-import SearchBar from "../components/SearchBar";
+import Loading from "../components/Loading"
+// import SearchBar from "../components/SearchBar";
 import  Navbar  from "../components/Navbar";
 
 function Characters() {
@@ -19,14 +20,15 @@ function Characters() {
   }
   
   useEffect(()=>{
-    dispatch(fetchCharacters())
-  },[dispatch])
+    if(status === "idle"){dispatch(fetchCharacters());}
+  },[dispatch,status])
 
   return (
     <>
       <Navbar />
+      {status === "loading" ? <Loading /> : ""}
       <h1 className="container">
-        <SearchBar />
+        {/* <SearchBar /> */}
         <div className="row">
           {data.map((item, index) => {
             return (
@@ -49,7 +51,8 @@ function Characters() {
                       <Link to={`/Characters/${item._id}`}>
                         <button
                           className="btn btn-primary"
-                          onClick={() => handleID(item)}>
+                          onClick={() => handleID(item)}
+                        >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -73,14 +76,14 @@ function Characters() {
             );
           })}
         </div>
-        {isThereNextPage  && (
+        {isThereNextPage && status !== "loading" && (
           <button
             className="btn btn-primary nextPage"
-            onClick={() => dispatch(fetchCharacters(page))}>
+            onClick={() => dispatch(fetchCharacters(page))}
+          >
             Next Page
           </button>
         )}
-        {/* {status ==="loading" ? <Loading /> : ""} */}
       </h1>
     </>
   );

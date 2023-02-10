@@ -9,7 +9,7 @@ const config = {
 // Character limit for pagination
 const char_limit = 20
 
-// Extra reducers using for fething Apı
+// ------------------- Extra reducers using for fething Apı -------------------
 
 // fetching characters from Apı
 export const fetchCharacters = createAsyncThunk("characters/getCharacters",async(page)=>{
@@ -18,11 +18,11 @@ export const fetchCharacters = createAsyncThunk("characters/getCharacters",async
 })
 
 // fetching searched character from Apı
-export const fetchSearch = createAsyncThunk("characters/getCharacters",async (term) => 
-{const res = await axios.get(`${process.env.REACT_APP_API_BASE_ENDPOINT}/character?name=${term}`,config);
-    return res.data.docs;
-  }
-);
+// export const fetchSearch = createAsyncThunk("characters/getCharacters",async (term) => 
+// {const res = await axios.get(`${process.env.REACT_APP_API_BASE_ENDPOINT}/character?name=${term}`,config);
+//     return res.data.docs;
+//   }
+// );
 
 // fetching movies from Apı
 export const fetchMovies = createAsyncThunk("characters/getMovies",async () => {
@@ -67,6 +67,7 @@ export const charactersSlice = createSlice({
       state.characters = [...state.characters, ...action.payload];
       state.status = false;
       state.page += 1;
+      console.log(state.page)
       if (state.page > 45) {
         state.isThereNextPage = false;
       }
@@ -88,10 +89,9 @@ export const charactersSlice = createSlice({
       state.movies = action.payload;
       state.status = "succeeded";
     },
-    [fetchSearch.fulfilled]: (state, action) => {
-      state.characters = [...action.payload];
-      // return { ...state,characters: payload };
-    },
+    // [fetchSearch.fulfilled]: (state, {payload}) => {
+    //   return { ...state,characters: payload };
+    // },
   },
 });
 

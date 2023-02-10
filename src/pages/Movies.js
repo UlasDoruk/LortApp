@@ -1,14 +1,17 @@
 import { Link } from 'react-router-dom';
 import { fetchMovies, getMovie } from '../redux/charactersSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from "react";
 import Navbar from '../components/Navbar'
-import { useEffect } from 'react';
+import Loading from '../components/Loading';
+
 
 function Movies() {
 
   let dispatch = useDispatch()
 
   const movies = useSelector((state)=>state.characters.movies)
+  const status = useSelector((state)=>state.characters.status)
 
   const handleMovieItem=((item)=>{
     dispatch(getMovie(item));
@@ -21,6 +24,7 @@ function Movies() {
   return (
     <>
       <Navbar />
+      {status ==="loading" ? <Loading /> : ""}
       <div className="row movie">
         {movies.map((item, index) => {
           return (

@@ -1,10 +1,12 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import Navbar from '../components/Navbar'
+import Loading from '../components/Loading';
 
 function Book() {
 
   const item = useSelector((state)=>state.characters.book)
+  const status = useSelector((state)=>state.characters.status)
 
   const renderBook=(()=>{
     return (
@@ -30,6 +32,7 @@ function Book() {
   return (
     <>
       <Navbar />
+      {status === "loading" ? <Loading /> : ""}
       {renderBook()}
     </>
   );
